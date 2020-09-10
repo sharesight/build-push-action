@@ -26,6 +26,7 @@ export interface Inputs {
   cacheFrom: string[];
   cacheTo: string[];
   secrets: string[];
+  ssh: string[];
 }
 
 export async function getInputs(): Promise<Inputs> {
@@ -48,7 +49,8 @@ export async function getInputs(): Promise<Inputs> {
     outputs: await getInputList('outputs', true),
     cacheFrom: await getInputList('cache-from', true),
     cacheTo: await getInputList('cache-to', true),
-    secrets: await getInputList('secrets', true)
+    secrets: await getInputList('secrets', true),
+    ssh: await getInputList('ssh')
   };
 }
 
@@ -94,6 +96,9 @@ async function getBuildArgs(inputs: Inputs, buildxVersion: string): Promise<Arra
   });
   await asyncForEach(inputs.secrets, async secret => {
     args.push('--secret', await buildx.getSecret(secret));
+  });
+  await asyncForEach(inputs.ssh, async ssh => {
+    args.push('--ssh', ssh);
   });
   if (inputs.file) {
     args.push('--file', inputs.file);
