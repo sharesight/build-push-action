@@ -64,6 +64,9 @@ inputs:
   secrets:
     description: "List of secrets to expose to the build (eg. key=value, GIT_AUTH_TOKEN=mytoken)"
     required: false
+  ssh:
+    description: "List of ssh configurations to forward to the build (eg. default)"
+    required: false
 
 outputs:
   digest:
