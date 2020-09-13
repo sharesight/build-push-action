@@ -435,6 +435,7 @@ Following inputs can be used as `step.with` keys
 | `cache-from`        | CSV     | List of [external cache sources](https://github.com/docker/buildx#--cache-fromnametypetypekeyvalue) (eg. `type=local,src=path/to/dir`) |
 | `cache-to`          | CSV     | List of [cache export destinations](https://github.com/docker/buildx#--cache-tonametypetypekeyvalue) (eg. `type=local,dest=path/to/dir`) |
 | `secrets`           | CSV     | List of secrets to expose to the build (eg. `key=value`, `GIT_AUTH_TOKEN=mytoken`) |
+| `ssh`               | List    | List of SSH agent socket or keys to expose to the build (eg: `default|<id>[=<socket>|<key>[,<key>]]`) |
 
 > `List` type can be a comma or newline-delimited string
 > ```yaml
